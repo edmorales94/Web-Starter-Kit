@@ -4,8 +4,11 @@
   "description": "Web App Dev Environment",
   "scripts": {
     "prestart": "babel-node scripts/start_message.js",
-    "start":"babel-node scripts/server.js",
-    "lint":"esw"
+    "start":"npm-run-all --parallel security-check start-server",
+    "start-server": "babel-node scripts/server.js",
+    "security-check": "nsp check",
+    "localtunnel": "lt --port 3000",
+    "share":"npm-run-all --parallel start-server localtunnel"
   },
   "author": "Developer Name",
   "license": "MIT",
