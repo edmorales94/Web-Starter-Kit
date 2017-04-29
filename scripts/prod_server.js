@@ -1,0 +1,36 @@
+/**
+ * Created by Mor-Men on 4/29/2017.
+ */
+import express from 'express';
+import path from 'path';
+import open from 'open';
+import compression from 'compression';
+
+/* eslint-disable no-console */
+
+const port = 3000;
+const app = express();
+
+app.use(express.static('dist'));
+app.use(compression());
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
+app.get('/products', function (req, res) {
+  // res.json({"a":"b"});
+  res.json([
+    {"id": 1, "name":"Joe Rocket Atomic 5.0", "desc":"multi-season textile"},
+    {"id": 2, "name":"Alpinestarts GP Plus", "desc":"perforated leather jacket"},
+    {"id": 3, "name":"Dainese Super Speed", "desc":"textile jacket"}
+  ]);
+})
+
+app.listen(port, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    open('http://localhost:' + port);
+  }
+});
