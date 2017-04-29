@@ -4,7 +4,8 @@
   "description": "Web App Dev Environment",
   "scripts": {
     "prestart": "babel-node scripts/start_message.js",
-    "start":"babel-node scripts/server.js"
+    "start":"babel-node scripts/server.js",
+    "lint":"esw"
   },
   "author": "Developer Name",
   "license": "MIT",
